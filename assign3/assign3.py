@@ -1,5 +1,7 @@
 import math
+import random
 #github test
+
 def searchHelp(a,v,l,h):
     m=math.floor(((h-l)/2))
     mPrime=m+l
@@ -13,6 +15,7 @@ def searchHelp(a,v,l,h):
     else:
         return searchHelp(a,v,mPrime+1,h)
 def printSearch(a,v,l,h,m,mPrime):
+
     i=0
     for num in a:
         if num == v:
@@ -58,9 +61,9 @@ def printSearchSum(a,v,l,h,sumC):
     for num in a:
 
         if l==i:
-            print(" "+'\033[42m'+str(num)+'\033[0m',end="")
+            print(" "+'\033[45m'+str(num)+'\033[0m',end="")
         elif h == i:
-            print(" "+'\33[104m'+str(num)+'\033[0m',end="")
+            print(" "+'\33[46m'+str(num)+'\033[0m',end="")
         else:
             print(' '+str(num),end="")
         i+=1
@@ -94,15 +97,45 @@ def sortedHasSum(s,x):
      # return found
 
 
-def hasSum():
-    pass
-def quicksort():
-    pass
+def hasSum(s,x):
+    return sortedHasSum(sorted(s),x)
+
+def partition(a,l,h):
+    x=a[h]
+    i=l-1
+    j=l
+    while j<h:
+        if a[j]<=x:
+            i+=1
+            temp=a[i]
+            a[i]=a[j]
+            a[j]=temp
+        j+=1
+    temp = a[i+1]
+    a[i+1] = a[h]
+    a[h] = temp
+    return i+1
+
+def quicksortHelper(a,l,h):
+    if l<h:
+        m=partition(a,l,h)
+        quicksortHelper(a,l,m-1)
+        quicksortHelper(a,m+1,h)
+
+    return a
+def quicksort(a):
+    return quicksortHelper(a,0,len(a)-1)
+
 def main():
     a=[7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    #print(sortedHasSum(a, 25))
+    a=sorted(a, key = lambda x: random.random() )
+    print(a)
     # for i in range(-10,10):
     #     a.append(i)
     #print(search(a,97))
-    print(sortedHasSum(a,25))
+    #printColors()
+    #print(hasSum(a,25))
     #print(searchWhile(a,5))
+    print(quicksort(a))
 main()
