@@ -1,0 +1,58 @@
+﻿Jacob Verdesi Section 4 ALGO
+
+1. Calculate iSort([4, 1, 3, 2]) as in the notes showing every step.
+        Insertion
+	i(x,[])=[x]        
+	i(x,y::ys) {x::y::ys         if x<=y  }
+   		   {y::i(s,ys)         else         }
+        Sort
+	s([])=[]
+	s(x::xs)=i)x,s(xs)
+        
+	s(4::1::3::2)=i(4,s([1,3,2]) 
+        s([1,3,2])= i(1,s([3,2])
+	s([3,2])= i(3,s([2])
+	s([2])= i(2,s([]) = [2]
+	s([])=[]
+	Reverse through from recursion 
+	i(2,[])
+	i(3,[2])
+	i(1,s([2,3])
+	i(4,s([1,2,3,4]) =[1,2,3,4] 
+
+ 2. Look up the selection-sort algorithm. Translate the algorithm into mathematical pseudo-code.
+
+
+        Selection- call findMin on list and send returned value to insertion        
+        s([])=[]        empty case
+        s(x::xs)= i(f(x,x::xs),ys)
+        
+        findMin - take x , compare to first element of list, if lower remove first from list else change x with first element and continue down list until empty.
+        f(x,[])=[x]
+        f(x,z::zs)=  { f(x,zs)        if(x<z) }
+                     { f(z,zs)        else     }
+
+
+        Insertion - insert the value into the list in order
+        i(x,[])=[x])
+        i(x,y::ys)=  y::ys::x
+
+
+9.Consider the following pseudo-code.         b^0 = 1         b ^n+1 = b ^n × b
+a) MathCode
+	powIt(b,0)=1
+	powIt(b,n+1)=b*powIt(b,n)
+
+b) Recursive
+	Def powIt(b,n)
+        	If n=0:
+                        Return 1
+                Else:
+                        Return b*powIt(b,n-1)
+c) Iterative
+	Def powIt(b,n)
+        	total=1
+        	For i in range n:
+                	total=total*b
+                	n-=1
+                Return total
