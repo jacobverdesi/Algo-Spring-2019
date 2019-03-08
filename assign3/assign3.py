@@ -121,7 +121,6 @@ def quicksortHelper(a,l,h):
         m=partition(a,l,h)
         quicksortHelper(a,l,m-1)
         quicksortHelper(a,m+1,h)
-
     return a
 def quicksort(a):
     return quicksortHelper(a,0,len(a)-1)
@@ -131,9 +130,9 @@ def main():
     #print(sortedHasSum(a, 25))
     a=sorted(a, key = lambda x: random.random() )
     print(a)
-    # for i in range(-10,10):
+    # for i in range(-10,10):x
     #     a.append(i)
-    #print(search(a,97))
+    #print(search(a,19))
     #printColors()
     #print(hasSum(a,25))
     #print(searchWhile(a,5))
